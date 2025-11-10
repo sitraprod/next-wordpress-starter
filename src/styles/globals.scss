@@ -1,0 +1,318 @@
+/* استدعاء خط "القاهرة" بأوزان احترافية */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&display=swap');
+
+/* نظام هوية "المنظار 24" الاحترافي */
+:root {
+  --brand-primary: #14213D;    /* أزرق ليلي عميق - للهوية */
+  --brand-accent: #D32F2F;     /* أحمر وقور - للعاجل والتفاعل المهم */
+  --text-heading: #111827;     /* أسود مزرق للعناوين - مريح للقراءة */
+  --text-body: #374151;        /* رمادي داكن للنصوص */
+  --text-muted: #6B7280;       /* رمادي فاتح للتفاصيل الثانوية */
+  --border-light: #E5E7EB;     /* حدود دقيقة جداً */
+  --bg-page: #F3F4F6;          /* خلفية الصفحة */
+  --bg-card: #FFFFFF;          /* خلفية البطاقات */
+}
+
+/* تأسيس الصفحة */
+html {
+  direction: rtl;
+  font-size: 16px; /* أساس للقياسات */
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-body);
+  margin: 0;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+/* ==============================
+   تصميم الهيدر والقائمة (محدث)
+   ============================== */
+.site-header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-light);
+  padding: 2rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  margin-bottom: 3rem;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 4.5rem; /* تكبير إضافي للشعار */
+  margin: 0;
+  color: var(--brand-primary);
+  line-height: 1;
+}
+
+h1 span {
+    color: var(--brand-accent);
+}
+
+.site-description {
+  text-align: center;
+  color: var(--brand-accent);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+}
+
+/* القائمة الرئيسية */
+.nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin: 2.5rem 0 0;
+  padding: 1rem 2rem;
+  list-style: none;
+  background: var(--brand-primary); /* خلفية داكنة للقائمة */
+  border-radius: 8px;
+  width: 100%;
+  max-width: 800px; /* عرض مناسب للقائمة */
+}
+
+.nav a {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--white, #fff) !important; /* روابط بيضاء */
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.nav a:hover {
+  background: var(--brand-accent); /* خلفية حمراء عند التحويم */
+  color: var(--white, #fff) !important;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 900;
+  font-size: 4rem; /* تكبير الشعار */
+  margin: 0;
+  color: var(--brand-primary);
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+/* الوصف تحت الشعار */
+h1 + p {
+  text-align: center;
+  color: var(--brand-accent); /* تمييز الوصف بلون مختلف */
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* ==============================
+   شبكة الأخبار الاحترافية
+   ============================== */
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+ul {
+  display: grid;
+  /* شبكة متجاوبة تبدأ بعمود واحد وتصل لـ 3 أعمدة في الشاشات الكبيرة */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* --- تمييز الخبر الأول (المانشيت) --- */
+@media (min-width: 1024px) {
+  li:first-child {
+    grid-column: 1 / -1; /* يمتد على كامل العرض */
+    display: grid;
+    grid-template-columns: 1fr; /* يمكن تقسيمه لصورة ونص مستقبلاً */
+    border-bottom: 3px solid var(--brand-primary); /* تمييز إضافي */
+  }
+
+  li:first-child h3 {
+    font-size: 2.5rem; /* عنوان أضخم للخبر الرئيسي */
+    line-height: 1.3;
+  }
+
+  li:first-child .metadata {
+    font-size: 1.1rem;
+  }
+}
+
+/* ==============================
+   تصميم بطاقة الخبر (News Card)
+   ============================== */
+li {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  /* زوايا حادة قليلاً لجدية أكثر، عكس التصميم السابق الدائري */
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+
+li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -10px rgba(20, 33, 61, 0.1);
+  border-color: var(--brand-primary);
+}
+
+/* رابط البطاقة بالكامل */
+li > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 2rem;
+}
+
+/* عناوين الأخبار */
+li h3 {
+  font-size: 1.6rem;
+  font-weight: 800; /* وزن أثقل للعناوين */
+  line-height: 1.4;
+  margin: 0 0 1.5rem 0;
+  color: var(--text-heading);
+}
+
+li:hover h3 {
+  color: var(--brand-primary); /* تلوين العنوان عند التحويم */
+}
+
+/* بيانات الخبر (الكاتب والتاريخ) */
+.metadata {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px dotted var(--border-light); /* فاصل منقط خفيف */
+  margin-top: auto;
+}
+
+/* تنسيق خاص لاسم الكاتب */
+.metadata span:first-child {
+    color: var(--brand-accent);
+    font-weight: 700;
+}
+
+/* تحسين تجربة القراءة */
+p {
+    margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   شريط الأخبار العاجلة (تحسين)
+   ============================== */
+.breaking-news {
+  background-color: var(--brand-accent);
+  color: var(--white, #fff);
+  width: 100%; /* يضمن أخذ العرض الكامل */
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem; /* تكبير الحشوة قليلاً */
+  font-size: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+.breaking-news .label {
+  background-color: rgba(0,0,0,0.3);
+  padding: 0.2rem 1rem;
+  border-radius: 4px;
+  margin-left: 1.5rem;
+  white-space: nowrap; /* يمنع نزول الكلمة لسطر ثاني */
+}
+
+.breaking-news marquee {
+    flex-grow: 1; /* يأخذ باقي المساحة المتاحة */
+    font-weight: 500;
+}
+
+/* ==============================
+   تصميم الهيدر (تحسين)
+   ============================== */
+.site-header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-light);
+  padding: 2.5rem 0 0; /* إلغاء الحشوة السفلية لدمج القائمة */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 4rem;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+/* القائمة الرئيسية (إصلاح المربعات البيضاء) */
+nav {
+    width: 100%;
+    background: var(--brand-primary); /* الخلفية للقائمة كاملة */
+    margin-top: 2.5rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0; /* إلغاء الفراغات بين العناصر */
+  margin: 0 auto;
+  padding: 0;
+  list-style: none !important;
+  max-width: 1280px;
+}
+
+.nav li {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important; /* إزالة أي خلفية بيضاء دخيلة */
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.nav li a {
+  display: block;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.9) !important; /* أبيض شفاف قليلاً */
+  padding: 1.2rem 2rem; /* تكبير مساحة الضغط */
+  transition: all 0.3s ease;
+  border-bottom: 4px solid transparent; /* تجهيز خط للتحويم */
+}
+
+.nav li a:hover {
+  background-color: rgba(0,0,0,0.2); /* تغميق خفيف عند التحويم */
+  color: var(--white, #fff) !important;
+  border-bottom-color: var(--brand-accent); /* ظهور خط أحمر تحت الرابط */
+}
